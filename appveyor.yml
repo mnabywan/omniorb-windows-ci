@@ -10,6 +10,14 @@ environment:
       PYTHONPATH: c:\Python310-x64\
       PYTHONPATHOMNI: "/cygdrive/c/Python310-x64/python"
       PYVER: "py310"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      ARCH: win32-msvc15
+      configuration: Release
+      CMAKE_GENERATOR: "Visual Studio 16 2019 Win64"
+      MSVCABR: "16"
+      PYTHONPATH: c:\Python310\
+      PYTHONPATHOMNI: "/cygdrive/c/Python310/python"
+      PYVER: "py310"
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   ARCH: x64-msvc15
     #   configuration: Release
@@ -69,7 +77,7 @@ install:
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
   - cmd: if %ARCH%==win32-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==x64-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
-  - cmd: if %ARCH%==win32-msvc15 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+  - cmd: if %ARCH%==win32-msvc15 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat"
   - cmd: if %ARCH%==x64-msvc15 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%platform%' (set by vcvars batch file)"
