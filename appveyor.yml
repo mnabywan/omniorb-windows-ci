@@ -46,7 +46,9 @@ environment:
 init:
   # Uncomment next line, to allow RDP access from start
   # - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
+  - cmd: cd "/cygdrive/c" 
+  - cmd: dir
+  
   # OmniOrb
   - cmd: cd "C:\projects\"
   - appveyor DownloadFile https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.5/omniORB-4.2.5.tar.bz2
