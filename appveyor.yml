@@ -8,7 +8,7 @@ environment:
       CMAKE_GENERATOR: "Visual Studio 15 2017 Win64"
       MSVCABR: "15"
       PYTHONPATH: c:\Python39-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python39-x64/python"
+      PYTHONPATHOMNI: "/cygdrive/c/Python39/python"
       PYVER: "py39"
     # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     #   ARCH: x64-msvc15
