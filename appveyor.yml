@@ -70,6 +70,10 @@ environment:
 init:
   # Uncomment next line, to allow RDP access from start
   # - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  # List C and C:\projects at init
+  - cmd: echo "List project"
+  - cmd: dir "C:\projects
+  - cmd: dir "C:\
 
   # OmniOrb
   - cmd: cd "C:\projects\"
