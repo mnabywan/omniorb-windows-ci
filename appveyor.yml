@@ -88,6 +88,10 @@ init:
   - cmd: cd "C:\projects\omniorb-windows-ci"
   
 install:
+  # List C and C:\projects before setvars
+  - cmd: dir "C:\projects
+  - cmd: dir "C:\
+
   - cmd: set PYTHONPATH=%PYTHONPATH%
   - cmd: set path=%PATH%;c:\cygwin64\bin;%PYTHONPATH%
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
@@ -97,6 +101,10 @@ install:
   - cmd: if %ARCH%==x64-msvc15 if %MSVCABR%==15 call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
   - cmd: if %ARCH%==win32-msvc15 if %MSVCABR%==16 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat"
   - cmd: if %ARCH%==x64-msvc15 if %MSVCABR%==16 call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+  # List C and C:\projects after setvars
+  - cmd: dir "C:\projects
+  - cmd: dir "C:\
 
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%platform%' (set by vcvars batch file)"
@@ -108,9 +116,6 @@ install:
   - ps: (get-content c:\projects\omniORB-4.3.0\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python310/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.3.0\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk
 
 build_script:
-  # List C and C:\projects
-  - cmd: dir "C:\projects
-  - cmd: dir "C:\
   - cmd: cd "C:\projects\omniORB-4.3.0\src"
   - cmd: make export
 after_build:
